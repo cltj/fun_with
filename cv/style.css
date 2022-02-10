@@ -1,0 +1,65 @@
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    }
+
+body {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    font-family: ""Montserrat"", sans-serif;
+    max-width: 100%;
+    min-height: 100vh;
+    height: auto;
+    letter-spacing: 0.1em;
+    }
+
+h1 {
+    color: #024873;
+    }
+
+h2 {
+    color: #024873;
+    left: 10px;
+    font-size: 10px;
+    }
+
+hr {
+    border-style: none;
+    border-top-style: dotted;
+    border-color: rgb(196, 196, 196);
+    border-width: 5px;
+    width: auto;
+    }
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+
+.channels {
+    display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+    }
+
+.channels .channels_item {
+    flex: 5;
+    margin-right: 5px;
+    transition: transform 0.2s;
+    color: #024873;
+    }
+
+.channels_item:hover {
+    transform: scale(1.5) rotate(30deg);
+    transition-timing-function: ease;
+    transform-origin: 20% 40%;
+    transition: transform 0.7s;
+    }
