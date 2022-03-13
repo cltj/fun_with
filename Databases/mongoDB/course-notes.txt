@@ -1,0 +1,188 @@
+/* Connect to MongoDB Atlas
+Use your servername and username/password
+*/
+mongosh "mongodb+srv://cluster0.hlk4n.mongodb.net/myFirstDatabase" --apiVersion 1 --username cltj
+
+/* Create database*/
+USE slqauth
+
+/*Show current DB*/
+show dbs
+
+/*Show current DB*/
+db
+
+===================  CREATE ===================================
+
+/*Create collection*/
+db.createCollection("newusers")
+
+/*Show collection*/
+db.createCollection("show collections)
+
+/*insert single document*/
+db.newusers.insertOne(
+{
+    "DisplayName": "Thor Kinstad",
+    "username": "cltj",
+    "Job" : {
+        "Title":"DBA",
+        "Area":"Database performance tuning",
+        "isManager": "false"
+    },
+    "Programming Languages": ["Python","SQL","HTML"]
+}
+)
+
+
+/*insert many*/
+db.newusers.insertMany(
+[
+{
+    "DisplayName": "Win Yu",
+    "username": "win",
+    "Job" : {
+        "Title":"Recuiter",
+        "Area":"Tech",
+        "isManager": "true"
+    },
+    "Programming Languages": ["HTML","CSS"]
+},
+{
+    "DisplayName": "Alex Luu",
+    "username": "aluu",
+    "Job" : {
+        "Title":"Cloud engineer",
+        "Area":"Cloud intratructure",
+        "isManager": "false"
+    },
+    "Programming Languages": ["python","bash"]
+},
+{
+    "DisplayName": "Eivind Lindbråten",
+    "username": "eivl",
+    "Job" : {
+        "Title":"Developer",
+        "Area":"Frontend",
+        "isManager": "false"
+    },
+    "Programming Languages": ["JS","React","Typescript"]
+}
+]
+)
+
+
+===================  READ ===================================
+
+/*Find*/
+ db.movies.find()
+
+/*Find and filter*/
+db.movies.find({runtime:11})
+
+/*Find and filter with limit */
+db.movies.find({runtime:11}).limit(3)
+
+/*Find and filter with limit and sort */
+db.movies.find( {runtime:11}, {runtime:1 ,title:1, _id:0} ).limit(5).sort({title:1})
+
+/*with readConcern*/
+db.movies.find({runtime:{$eq:11}}, {runtime:1 ,title:1, _id:0}).limit(5).sort({title:-1}).readConcern("majority")
+
+/*with readConcern and maxtimeMS*/
+db.movies.find({runtime:{$eq:11}}, {runtime:1 ,title:1, _id:0}).limit(5).sort({title:-1}).readConcern("linearizable").maxTimeMS(10000)
+
+
+=================== UPDATE ===================================
+db.movies.find( {runtime:12}, {runtime:1 ,title:1, year:1, _id:0} ).limit(3).sort({title:-1})
+
+/*Update single paramater in one object*/
+db.movies.updateOne(
+    {title: {$eq : "The Old Crocodile"}},
+    {
+        $set: {"title":"The New Crocodile"}
+        }
+)
+
+/*Update multiple paramaters in one object*/
+db.movies.updateOne(
+    {title: {$eq : "The New Crocodile"}},
+    {
+        $set: {"title":"The Oldest Crocodile", "year": 2020}
+        }
+)
+
+
+## Check ##
+db.movies.find( {year: {$eq:1988}}).count()
+
+/*Update multiple objects*/
+db.movies.updateMany(
+    {year: {$eq:1988}},
+    {
+        $set: {"year":2025}
+    }
+)
+
+## check again ##
+db.movies.find( {year: {$eq:2025}}).count()
+
+/*Upsert (check if exist, if no insert new document*/
+db.movies.updateMany(
+    {year: {$eq:1988}},
+    {
+        $set: {"year":2025}
+    },
+    {upsert:true}
+)
+
+
+## 1 ##
+db.movies.updateMany(
+    {runtime: {$eq:1122}},
+    {
+        $set: {"title": "mysuper", "year":2020, "awards.wins":9 }
+    },
+    {upsert:true, w:"majority", wtimeout:1000}
+)
+
+## 2 ##
+db.movies.replaceOne(
+    {runtime: {$eq:1122}},
+    {runtime:1122, "NoTitle": "ReplaceOneExample", "NewYear":2020, "awards.losts":5 }
+)
+
+## 3 ##
+db.movies.find({runtime:1122})
+
+
+
+=================== DELETE ===================================
+
+##  Check ## (14)
+db.movies.find({runtime:25}).count()
+
+/*Delete one document*/
+db.movies.deleteOne({runtime:25})
+
+/*Delete many documents*/
+db.movies.deleteMany({runtime:25})
+
+
+## CHeck ## (9)
+db.movies.find({runtime:35}).count()
+
+/*Remove one entire document*/
+db.movies.remove({runtime:35}, true)
+
+## 8 left ##
+db.movies.find({runtime:35}).count()
+
+/*Remove all document with query parameter*/
+db.movies.remove({runtime:35})
+
+## 0 left ##
+db.movies.find({runtime:35}).count()
+
+/*Remove all documents in DB*/
+db.movies.remove({})
