@@ -10,3 +10,4 @@ def random_bool():
 
 
 print(random_float(),random_bool())
+print("Hooray!")
