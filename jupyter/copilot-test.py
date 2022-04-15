@@ -8,6 +8,11 @@ def random_float():
 def random_bool():
     return random_float() > 0.5
 
+"""if true then print hooray else print boo"""
+def random_boolean_print():
+    if random_bool():
+        print("hooray")
+    else:
+        print("boo")
 
-print(random_float(),random_bool())
-print("Hooray!")
+print(random_boolean_print())
