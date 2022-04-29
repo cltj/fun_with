@@ -5,4 +5,3 @@ def main():
     print(random.randint(1, 20))
 
 main()
-print("\n")
