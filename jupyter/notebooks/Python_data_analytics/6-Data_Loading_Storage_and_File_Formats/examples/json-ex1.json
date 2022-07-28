@@ -1,0 +1,8 @@
+{"name": "Wes",
+"places_lived": ["USA", "Spain", "Norway"],
+"pet": null,
+"siblings": [
+    {"name": "Scott", "age": 30, "pets":["Zeus","Zuko","Zanzibar"]},
+    {"name": "Stine", "age": 38, "pets":["Mille","Milo","Grumpy"]}
+    ]
+}
