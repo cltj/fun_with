@@ -16,3 +16,12 @@ class My_Config():
     def subscription_id():
         SUBSCRIPTION_ID = os.getenv("SUBSCRIPTION_ID")
         return SUBSCRIPTION_ID
+    def aws_user():
+        AWS_USER = os.getenv("AWS_USER")
+        return AWS_USER
+    def aws_secret_key():
+        AWS_SECRET_KEY = os.getenv("AWS_SECRET_KEY")
+        return AWS_SECRET_KEY
+    def aws_access_id():
+        AWS_ACCESS_ID = os.getenv("AWS_ACCESS_ID")
+        return AWS_ACCESS_ID
