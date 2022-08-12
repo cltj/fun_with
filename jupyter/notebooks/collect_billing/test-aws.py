@@ -23,8 +23,8 @@ foo.to_csv('foo.csv')
 bar.to_csv('bar.csv')
 
 # Upload files to S3 bucket
-s3.Bucket('collectbill').upload_file(Filename='foo.csv', Key='foo.csv')
-s3.Bucket('collectbill').upload_file(Filename='bar.csv', Key='bar.csv')
+#s3.Bucket('collectbill').upload_file(Filename='foo.csv', Key='foo.csv')
+#s3.Bucket('collectbill').upload_file(Filename='bar.csv', Key='bar.csv')
 
 for obj in s3.Bucket('collectbill').objects.all():
     print(obj)

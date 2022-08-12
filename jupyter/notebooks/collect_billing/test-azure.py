@@ -6,10 +6,10 @@ import pandas as pd
 credential = DefaultAzureCredential()
 client = ConsumptionManagementClient(
     credential=credential,
-    subscription_id=cfg.subscription_id()
+    subscription_id=cfg.az_subscription_id()
     )
 
-a = client.usage_details.list(scope='/subscriptions/' + cfg.subscription_id() + '/')
+a = client.usage_details.list(scope='/subscriptions/' + cfg.az_subscription_id() + '/')
 
 df = pd.DataFrame()
 
