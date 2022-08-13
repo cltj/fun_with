@@ -31,9 +31,9 @@ class My_Config():
     def gcp_prices_api_key():
         GCP_PRICES_API_KEY = os.getenv("GCP_PRICES_API_KEY")
         return GCP_PRICES_API_KEY
-    def cgp_client_id():
-        GCP_CLIENT_ID = os.getenv("CGP_CLIENT_ID")
+    def gcp_client_id():
+        GCP_CLIENT_ID = os.getenv("GCP_CLIENT_ID")
         return GCP_CLIENT_ID
-    def cgp_client_secret():
-        GCP_CLIENT_SECRET = os.getenv("CGP_CLIENT_SECRET")
+    def gcp_client_secret():
+        GCP_CLIENT_SECRET = os.getenv("GCP_CLIENT_SECRET")
         return GCP_CLIENT_SECRET
