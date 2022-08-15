@@ -52,3 +52,6 @@ def make_df():
     return df
 
 make_df()
+
+# Need to convert type to parquet 
+# look for tools that can gather all files in a folder and convert to parquet
