@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 import pandas_gbq
 
+# Working google authentication and client for billing api
+
 credential_path = "/mnt/c/dev/cl/fun_with/jupyter/notebooks/collect_billing/cert/gcp-prices.privkey.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
@@ -19,10 +21,10 @@ df = pd.DataFrame(s, index=s.columns)
 len_row, len_col = df.shape
 
 print(df.head())
+os.makedirs('gcp')
+df.to_csv('gcp/GCP-Billing-Data.csv', index=False)
 
-#df.to_csv('gcp-prices.csv', index=False)
-
-df2 = pd.read_csv('gcp-prices.csv')
-print(df2.head())
-df2.shape
+#df2 = pd.read_csv('GCP-Billing-Data.csv')
+#print(df2.head())
+#len_row, len_col = df2.shape
     

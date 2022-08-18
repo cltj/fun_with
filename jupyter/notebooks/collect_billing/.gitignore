@@ -8,6 +8,14 @@
 ### dotenv ###
 .env
 
+### AWS/GCP/azure folder ###
+.aws
+/aws/*
+.azure
+/azure/*
+.gcp
+/gcp/*
+
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
