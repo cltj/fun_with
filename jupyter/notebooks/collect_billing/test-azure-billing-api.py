@@ -20,7 +20,12 @@ for i in a:
     df = df.append(i.as_dict(), ignore_index=True)
 
 print(df.shape)
-os.makedirs('azure')
-df.to_csv('azure/Azure-Billing-Data.csv')
+
+#Make a directory if it doesn't exist
+if not os.path.exists('azure'):
+    os.makedirs('azure')
+
+#df.to_csv('azure/Azure-Billing-Data.csv')
+df.to_parquet('azure/Azure-Billing-Data.parquet')
 
 # print(f"Successful credential: {credential._successful_credential.__class__.__name__}")

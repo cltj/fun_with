@@ -31,7 +31,11 @@ for s3_object in your_bucket.objects.all():
         path, filename = os.path.split(s3_object.key)
 
         #Create sub directories if its not existing
-        os.makedirs(path)
+        #os.makedirs(path)
+
+        #Make a directory if it doesn't exist
+        if not os.path.exists(path):
+            os.makedirs(path)
         
         #Download the file in the sub directories or directory if its available. 
         your_bucket.download_file(s3_object.key, path+'/'+filename)

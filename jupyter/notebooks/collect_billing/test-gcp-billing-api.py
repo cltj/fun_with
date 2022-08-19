@@ -21,8 +21,13 @@ df = pd.DataFrame(s, index=s.columns)
 len_row, len_col = df.shape
 
 print(df.head())
-os.makedirs('gcp')
-df.to_csv('gcp/GCP-Billing-Data.csv', index=False)
+
+#Make a directory if it doesn't exist
+if not os.path.exists('gcp'):
+    os.makedirs('gcp')
+
+#df.to_csv('gcp/GCP-Billing-Data.csv', index=False)
+df.to_parquet('gcp/GCP-Billing-Data.parquet', index=False)
 
 #df2 = pd.read_csv('GCP-Billing-Data.csv')
 #print(df2.head())
