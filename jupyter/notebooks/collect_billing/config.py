@@ -37,3 +37,28 @@ class My_Config():
     def gcp_client_secret():
         GCP_CLIENT_SECRET = os.getenv("GCP_CLIENT_SECRET")
         return GCP_CLIENT_SECRET
+    def blob_sas_url():
+        BLOB_SAS_URL = os.getenv("BLOB_SAS_URL")
+        return BLOB_SAS_URL
+    def blob_sas_token():
+        BLOB_SAS_TOKEN = os.getenv("BLOB_SAS_TOKEN")
+        return BLOB_SAS_TOKEN
+    def storage_account_name():
+        STORAGE_ACCOUNT_NAME = os.getenv("STORAGE_ACCOUNT_NAME")
+        return STORAGE_ACCOUNT_NAME
+    def storage_account_key():
+        STORAGE_ACCOUNT_KEY = os.getenv("STORAGE_ACCOUNT_KEY")
+        return STORAGE_ACCOUNT_KEY
+    def storage_container_name():
+        STORAGE_CONTAINER_NAME = os.getenv("STORAGE_CONTAINER_NAME")
+        return STORAGE_CONTAINER_NAME
+    def storage_account_url():
+        STORAGE_ACCOUNT_URL = os.getenv("STORAGE_ACCOUNT_URL")
+        return STORAGE_ACCOUNT_URL
+    def storage_connection_string():
+        STORAGE_CONNECTION_STRING = os.getenv("STORAGE_CONNECTION_STRING")
+        return STORAGE_CONNECTION_STRING
+    def gcp_data_path():
+        GCP_DATA_PATH = os.getenv("GCP_DATA_PATH")
+        return GCP_DATA_PATH
+        
