@@ -54,7 +54,6 @@ line=shape.line
 line.color.rgb=RGBColor(255,0,0)
 logo1=slide.shapes.add_picture(pylogo,Inches(14.5),Inches(0.4),height=Inches(0.5),width=Inches(0.5))
 logo2=slide.shapes.add_picture(pptlogo,Inches(15.0),Inches(0.4),height=Inches(0.5),width=Inches(0.5))
-#-----------------------------------------------------------------------------------------------------------------------
 
 
 N = 100
@@ -113,7 +112,7 @@ fig = go.Figure(go.Sunburst(
         parents = df.parents))
 fig.update_layout(uniformtext=dict(minsize=10, mode='hide'))
 
-fig.write_image(f,format='png',engine='kaleido') # Not working
+fig.write_image(f,format='png',engine='kaleido') # Sometimes working ??? 
 imgpth='images/img.png'
 
 left = top = Inches(1)
