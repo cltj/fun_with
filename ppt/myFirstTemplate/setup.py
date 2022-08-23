@@ -34,7 +34,18 @@ def presentation():
     prs.slide_height = Inches(9)
     return prs
 
+
 def new_slide(prs,layout_number):
     return prs.slides.add_slide(prs.slide_layouts[layout_number])
+
+
+def new_title(slide, title):
+    slide.shapes.title.text = title
+    return slide.shapes.title.text
+
+
+def new_subtitle(slide, subtitle):
+    slide.placeholders[1].text = subtitle
+    return slide.placeholders[1].text
 
 # print(pallete()['color_primary'])
