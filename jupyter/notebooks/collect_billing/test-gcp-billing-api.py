@@ -33,5 +33,5 @@ df.to_parquet('gcp/GCP-Billing-Data.parquet', index=False)
 #print(df2.head())
 #len_row, len_col = df2.shape
 
-# What is diff in price between gbq and their storage solutions??
-    
+# Export billing to storage is depricated
+
