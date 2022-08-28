@@ -17,7 +17,7 @@ def aws_billing():
         aws_secret_access_key=cfg.aws_secret_key()
     )
 
-    LOCAL_FILES_PATH = cfg.local_files_path()
+    # LOCAL_FILES_PATH = cfg.local_files_path()
     s3 = session.resource('s3')
     bucket = s3.Bucket('collectbill')
     count = 1
@@ -66,7 +66,6 @@ def gcp_billing():
 
 
 def upload_parquet():
-        
     CONNECTION_STRING = cfg.storage_connection_string()
     BILLING_CONTAINER = cfg.storage_container_name()
     LOCAL_FILES_PATH = cfg.local_files_path()
@@ -74,7 +73,6 @@ def upload_parquet():
     class AzureBlobFileUploader:
         def __init__(self):
             print("Intializing AzureBlobFileUploader")
-        
             # Initialize the connection to Azure storage account
             self.blob_service_client =  BlobServiceClient.from_connection_string(CONNECTION_STRING)
         
@@ -82,26 +80,20 @@ def upload_parquet():
             # Get all files with parquet extension and exclude directories
             all_file_names = [f for f in os.listdir(LOCAL_FILES_PATH)
                             if os.path.isfile(os.path.join(LOCAL_FILES_PATH, f)) and ".parquet" in f]
-        
-            # Upload each file
-            for file_name in all_file_names:
+            
+            for file_name in all_file_names: # Upload each file
                 self.upload_file(file_name)
         
         def upload_file(self,file_name):
-            # Create blob with same name as local file name
-            blob_client = self.blob_service_client.get_blob_client(container=BILLING_CONTAINER,
-                                                                blob=file_name)
-            # Get full path to the file
+            blob_client = self.blob_service_client.get_blob_client(container=BILLING_CONTAINER, blob=file_name) # Create blob with same name as local file name
             upload_file_path = os.path.join(LOCAL_FILES_PATH, file_name)
-        
-            # Uploads to cltj
+            
             print(f"uploading file - {file_name}")
-            with open(upload_file_path, "rb") as data:
+            with open(upload_file_path, "rb") as data: # Uploads to cltj
                 blob_client.upload_blob(data,overwrite=True)
-        
-        
-        # Initialize class and upload files
-    azure_blob_file_uploader = AzureBlobFileUploader()
+
+
+    azure_blob_file_uploader = AzureBlobFileUploader() # Initialize class and upload files
     azure_blob_file_uploader.upload_all_images_in_folder()
 
 def cleanup_files():
