@@ -61,4 +61,6 @@ class My_Config():
     def gcp_data_path():
         GCP_DATA_PATH = os.getenv("GCP_DATA_PATH")
         return GCP_DATA_PATH
-        
+    def local_files_path():
+        LOCAL_FILES_PATH = os.getenv("LOCAL_FILES_PATH")
+        return LOCAL_FILES_PATH

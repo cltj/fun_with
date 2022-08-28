@@ -1,8 +1,8 @@
-from datetime import datetime
-from random import randint
 from google.cloud import bigquery
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.consumption import ConsumptionManagementClient
+from azure.storage.blob import BlobServiceClient, BlobClient
+from azure.storage.blob import ContentSettings, ContainerClient
 from config import My_Config as cfg
 import boto3
 import os
@@ -48,17 +48,49 @@ def gcp_billing():
     client = bigquery.Client(project=project_id, location=dataset_location)
 
     query = """SELECT * FROM `gcp-prices-358310.12345.gcp_billing_export_v1_017DA2_854255_CCEB23`"""
-    s = pandas_gbq.read_gbq(query, project_id=project_id, dialect='standard')
-    df = pd.DataFrame(s, index=s.columns)
+    data = pandas_gbq.read_gbq(query, project_id=project_id, dialect='standard')
+    df = pd.DataFrame(data)
     df.to_parquet('local/GCP-Billing-Data.parquet', index=False)
 
 
 def upload_parquet():
-    path= '/mnt/c/dev/cl/fun_with/jupyter/notebooks/collect_billing/local'
-    for file in os.listdir(path):
-        if file.endswith(".parquet"):
-        # Prints only parquet file present in local folder
-            print(file)
+        
+    CONNECTION_STRING = cfg.storage_connection_string()
+    BILLING_CONTAINER = cfg.storage_container_name()
+    LOCAL_FILES_PATH = cfg.local_files_path()
+    
+    class AzureBlobFileUploader:
+        def __init__(self):
+            print("Intializing AzureBlobFileUploader")
+        
+            # Initialize the connection to Azure storage account
+            self.blob_service_client =  BlobServiceClient.from_connection_string(CONNECTION_STRING)
+        
+        def upload_all_images_in_folder(self):
+            # Get all files with parquet extension and exclude directories
+            all_file_names = [f for f in os.listdir(LOCAL_FILES_PATH)
+                            if os.path.isfile(os.path.join(LOCAL_FILES_PATH, f)) and ".parquet" in f]
+        
+            # Upload each file
+            for file_name in all_file_names:
+                self.upload_file(file_name)
+        
+        def upload_file(self,file_name):
+            # Create blob with same name as local file name
+            blob_client = self.blob_service_client.get_blob_client(container=BILLING_CONTAINER,
+                                                                blob=file_name)
+            # Get full path to the file
+            upload_file_path = os.path.join(LOCAL_FILES_PATH, file_name)
+        
+            # Uploads to cltj
+            print(f"uploading file - {file_name}")
+            with open(upload_file_path, "rb") as data:
+                blob_client.upload_blob(data,overwrite=True)
+        
+        
+        # Initialize class and upload files
+    azure_blob_file_uploader = AzureBlobFileUploader()
+    azure_blob_file_uploader.upload_all_images_in_folder()
 
 
 def main():
