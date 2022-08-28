@@ -1,4 +1,3 @@
-from operator import index
 from google.cloud import bigquery
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.consumption import ConsumptionManagementClient
@@ -26,7 +25,7 @@ def aws_billing():
         if s3_object.key.endswith('.parquet'):
             path, filename = os.path.split(s3_object.key)
             bucket.download_file(s3_object.key, 'local/'+str(count)+filename)
-            filenames.append(filename)
+            filenames.append(s3_object.key)
             count += 1
 
     # with open('local/AWS-Billing-Data.parquet', 'w') as outfile:
@@ -36,6 +35,7 @@ def aws_billing():
     #     for i in s:
     #         df = pd.concat(i, axis=1)
     #     outfile.write(df)
+
 
 
 def azure_billing():
@@ -92,9 +92,9 @@ def upload_parquet():
             with open(upload_file_path, "rb") as data: # Uploads to cltj
                 blob_client.upload_blob(data,overwrite=True)
 
-
     azure_blob_file_uploader = AzureBlobFileUploader() # Initialize class and upload files
     azure_blob_file_uploader.upload_all_images_in_folder()
+
 
 def cleanup_files():
     LOCAL_FILES_PATH = cfg.local_files_path()
