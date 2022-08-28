@@ -1,3 +1,4 @@
+from operator import index
 from google.cloud import bigquery
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.consumption import ConsumptionManagementClient
@@ -16,14 +17,25 @@ def aws_billing():
         aws_secret_access_key=cfg.aws_secret_key()
     )
 
+    LOCAL_FILES_PATH = cfg.local_files_path()
     s3 = session.resource('s3')
     bucket = s3.Bucket('collectbill')
     count = 1
+    filenames = []
     for s3_object in bucket.objects.all():
         if s3_object.key.endswith('.parquet'):
             path, filename = os.path.split(s3_object.key)
             bucket.download_file(s3_object.key, 'local/'+str(count)+filename)
+            filenames.append(filename)
             count += 1
+
+    # with open('local/AWS-Billing-Data.parquet', 'w') as outfile:
+    #     all_file_names = [f for f in os.listdir(LOCAL_FILES_PATH)
+    #                         if os.path.isfile(os.path.join(LOCAL_FILES_PATH, f)) and ".parquet" in f]
+    #     s = pd.Series(all_file_names)
+    #     for i in s:
+    #         df = pd.concat(i, axis=1)
+    #     outfile.write(df)
 
 
 def azure_billing():
@@ -92,12 +104,20 @@ def upload_parquet():
     azure_blob_file_uploader = AzureBlobFileUploader()
     azure_blob_file_uploader.upload_all_images_in_folder()
 
+def cleanup_files():
+    LOCAL_FILES_PATH = cfg.local_files_path()
+    for f in os.listdir(LOCAL_FILES_PATH):
+        if not f.endswith(".parquet"):
+            continue
+        os.remove(os.path.join(LOCAL_FILES_PATH, f))
+
 
 def main():
     aws_billing()
     azure_billing()
     gcp_billing()
     upload_parquet()
+    cleanup_files()
     print("Done!!!")
 
 
