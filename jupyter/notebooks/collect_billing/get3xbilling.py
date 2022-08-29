@@ -53,10 +53,10 @@ def azure_billing():
 
 
 def gcp_billing():
-    credential_path = "/mnt/c/dev/cl/fun_with/jupyter/notebooks/collect_billing/cert/gcp-prices.privkey.json"
+    credential_path = cfg.gcp_credential_path()
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
-    project_id='gcp-prices-358310'
-    dataset_location='europe-west4'
+    project_id=cfg.gcp_project_id()
+    dataset_location=cfg.gcp_dataset_location()
     client = bigquery.Client(project=project_id, location=dataset_location)
 
     query = """SELECT * FROM `gcp-prices-358310.12345.gcp_billing_export_v1_017DA2_854255_CCEB23`"""
@@ -105,11 +105,11 @@ def cleanup_files():
 
 
 def main():
-    aws_billing()
-    azure_billing()
+    # aws_billing()
+    # azure_billing()
     gcp_billing()
-    upload_parquet()
-    cleanup_files()
+    # upload_parquet()
+    # cleanup_files()
     print("Done!!!")
 
 

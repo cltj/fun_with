@@ -61,6 +61,18 @@ class My_Config():
     def gcp_data_path():
         GCP_DATA_PATH = os.getenv("GCP_DATA_PATH")
         return GCP_DATA_PATH
+    def gcp_gbq_table():
+        GCP_GBQ_TABLE = os.getenv("GCP_GBQ_TABLE")
+        return GCP_GBQ_TABLE
+    def gcp_credential_path():
+        GCP_CREDENTIAL_PATH = os.getenv("GCP_CREDENTIAL_PATH")
+        return GCP_CREDENTIAL_PATH
+    def gcp_project_id():
+        GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
+        return GCP_PROJECT_ID
+    def gcp_dataset_location():
+        GCP_DATASET_LOCATION = os.getenv("GCP_DATASET_LOCATION")
+        return GCP_DATASET_LOCATION
     def local_files_path():
         LOCAL_FILES_PATH = os.getenv("LOCAL_FILES_PATH")
         return LOCAL_FILES_PATH
