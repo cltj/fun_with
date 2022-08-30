@@ -1,8 +1,7 @@
 from google.cloud import bigquery
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.consumption import ConsumptionManagementClient
-from azure.storage.blob import BlobServiceClient, BlobClient
-from azure.storage.blob import ContentSettings, ContainerClient
+from azure.storage.blob import BlobServiceClient
 from config import My_Config as cfg
 import boto3
 import os
