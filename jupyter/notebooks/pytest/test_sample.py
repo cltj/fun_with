@@ -1,3 +1,15 @@
+# content of test_sysexit.py
+import pytest
+
+
+def f():
+    raise SystemExit(1)
+
+
+def test_mytest():
+    with pytest.raises(SystemExit):
+        f()
+
 # content of test_sample.py
 def inc(x):
     return x + 1
@@ -5,6 +17,7 @@ def inc(x):
 
 def test_answer():
     assert inc(3) == 5
+
 
 # in terminal run
 # py.test test_sample.py
