@@ -4,6 +4,7 @@ def power(x,y):
 
 def main():
     p = power(2,4)
+    print(p)
     assert p == 15
 
 
