@@ -73,6 +73,9 @@ class My_Config():
     def gcp_dataset_location():
         GCP_DATASET_LOCATION = os.getenv("GCP_DATASET_LOCATION")
         return GCP_DATASET_LOCATION
+    def gcp_billing_account_id():
+        GCP_BILLING_ACCOUNT_ID = os.getenv("GCP_BILLING_ACCOUNT_ID")
+        return GCP_BILLING_ACCOUNT_ID
     def local_files_path():
         LOCAL_FILES_PATH = os.getenv("LOCAL_FILES_PATH")
         return LOCAL_FILES_PATH
