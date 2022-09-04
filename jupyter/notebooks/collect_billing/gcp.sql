@@ -1,4 +1,4 @@
-SELECT 
+SELECT -- The width of the frame e.g the columns included
 invoice.month as invoiceMonth,
 billing_account_id,
 sum(cost) as cost,
@@ -18,7 +18,7 @@ cast(usage_start_time as date) as startdate,
 cast(usage_end_time as date) as enddate
 
 FROM '@projectName.@datasetName.@tableName'
-WHERE billing_account_id = @billing_account_id
+WHERE billing_account_id = @billing_account_id -- The length of the frame e.g the rows included
 AND invoice.month = '@month-3'
 OR  invoice.month = '@month-2'
 OR  invoice.month = '@month-1'
