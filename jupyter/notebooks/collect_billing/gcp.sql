@@ -8,7 +8,7 @@ sku.description as sku,
 resource.name as resourceName,
 project.id as projectId,
 project.name as projectName,
-TO_JSON_STRING(project.labels) as labelsid,
+TO_JSON_STRING(project.labels) as labelsid, -- project.labels.key / project.labels.value
 currency,
 location.location as region,
 usage.unit as usageUnit,
