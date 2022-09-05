@@ -27,14 +27,6 @@ def aws_billing():
             filenames.append(s3_object.key)
             count += 1
 
-    # with open('local/AWS-Billing-Data.parquet', 'w') as outfile:
-    #     all_file_names = [f for f in os.listdir(LOCAL_FILES_PATH)
-    #                         if os.path.isfile(os.path.join(LOCAL_FILES_PATH, f)) and ".parquet" in f]
-    #     s = pd.Series(all_file_names)
-    #     for i in s:
-    #         df = pd.concat(i, axis=1)
-    #     outfile.write(df)
-
 
 
 def azure_billing():
@@ -104,11 +96,11 @@ def cleanup_files():
 
 
 def main():
-    # aws_billing()
-    # azure_billing()
+    aws_billing()
+    azure_billing()
     gcp_billing()
-    # upload_parquet()
-    # cleanup_files()
+    upload_parquet()
+    cleanup_files()
     print("Done!!!")
 
 
