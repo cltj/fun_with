@@ -28,7 +28,6 @@ def aws_billing():
             count += 1
 
 
-
 def azure_billing():
     credential = DefaultAzureCredential()
     client = ConsumptionManagementClient(
