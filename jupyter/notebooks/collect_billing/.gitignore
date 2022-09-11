@@ -8,6 +8,10 @@
 ### dotenv ###
 .env
 
+### Files ###
+*.parquet
+*.csv
+
 ### AWS/GCP/azure folder ###
 .aws
 /aws/*
