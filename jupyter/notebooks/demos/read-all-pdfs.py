@@ -11,14 +11,15 @@ for filename in os.listdir(reports_path):
     f = os.path.join(reports_path, filename)
     if os.path.isfile(f):
         all_reports.append(f)
-print(all_reports)
+print('Reading ' + str(len(all_reports)) + ' pdf reports!')
 
 
-def read_pdfs():
+def combine_pdfs():
     txt = ''
+    print("Combining " + str(len(all_reports)) + '!')
     for pdf in all_reports:
         report = all_reports.pop()
-        
+
         reader = PdfReader(report)
         number_of_pages = len(reader.pages)
         z = number_of_pages-1
@@ -30,8 +31,10 @@ def read_pdfs():
         txt_x = txt.replace('/n','')
         return txt_x
 
-all_text = read_pdfs()
+all_text = combine_pdfs()
 
 
 with open("all_text.txt","w") as f:
+    print("Writing base file!")
     f.write(all_text)
+    print("Done!")

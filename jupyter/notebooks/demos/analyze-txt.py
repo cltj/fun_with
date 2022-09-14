@@ -24,4 +24,4 @@ with open(text_path,'r') as file:
 
 print('Lines: ' + str(line_count) + '\n',
       'Words: ' + str(word_count) + '\n',
-      'Azure: ' + str(azure_count))
+      'Found the word: ' + searching_for + ' ' + str(azure_count) + ' times')
