@@ -89,9 +89,10 @@ def upload_parquet():
 def cleanup_files():
     LOCAL_FILES_PATH = cfg.local_files_path()
     for f in os.listdir(LOCAL_FILES_PATH):
-        if not f.endswith(".parquet"):
+        if os.path.isfile(os.path.join(LOCAL_FILES_PATH, f)) and f.endswith(".parquet"):
+            os.remove(os.path.join(LOCAL_FILES_PATH, f))
+        else:
             continue
-        os.remove(os.path.join(LOCAL_FILES_PATH, f))
 
 
 def main():
