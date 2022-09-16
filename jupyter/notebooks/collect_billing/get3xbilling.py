@@ -101,7 +101,7 @@ def main():
     gcp_billing()
     upload_parquet()
     cleanup_files()
-    print("Done!!!")
+    print("Done!!!!")
 
 
 if __name__ == '__main__':
