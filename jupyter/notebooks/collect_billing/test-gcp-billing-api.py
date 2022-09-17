@@ -21,4 +21,4 @@ if not os.path.exists('gcp'):
 df.to_parquet('gcp/GCP-Billing-Data.parquet', index=False)
 
 
-print('DONE!!!')
+print('DONE')

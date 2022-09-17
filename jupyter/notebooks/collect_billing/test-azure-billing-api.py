@@ -24,4 +24,4 @@ if not os.path.exists('azure'):
 df.to_parquet('azure/Azure-Billing-Data.parquet')
 
 
-print('DONE!!!')
+print('DONE')
