@@ -23,3 +23,4 @@ AND invoice.month BETWEEN '@yyyyMM' AND '@yyyyMM'
 AND cast(usage_start_time as date) >= date_add(CURRENT_DATE(),INTERVAL -90 DAY)
 AND usage.amount > 0
 GROUP BY startdate, enddate, billing_account_id, cost_type, serviceId, region, usageUnit, projectName, projectId,currency, invoiceMonth, serviceDescription, sku, resourceName, labelsid
+
