@@ -13,3 +13,5 @@ sns.set_theme()
 plt.xticks(rotation=45)
 sns.barplot(data=df, x="resource_group", y="Amount")
 plt.savefig('save_as_a_transparent2_png.png', transparent=True)
+
+print('Done!!!')
