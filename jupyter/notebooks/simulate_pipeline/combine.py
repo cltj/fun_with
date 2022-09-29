@@ -1,4 +1,3 @@
-from azure.storage.blob import BlobServiceClient
 from config import My_Config as cfg
 import pandas as pd
 import numpy as np

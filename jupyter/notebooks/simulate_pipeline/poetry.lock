@@ -989,7 +989,7 @@ test = ["hypothesis (>=5.5.3)", "pytest (>=6.0)", "pytest-xdist (>=1.31)"]
 
 [[package]]
 name = "pandas-gbq"
-version = "0.17.8"
+version = "0.17.9"
 description = "Google BigQuery connector for pandas"
 category = "main"
 optional = false
@@ -2512,8 +2512,8 @@ pandas = [
     {file = "pandas-1.4.4.tar.gz", hash = "sha256:ab6c0d738617b675183e5f28db32b5148b694ad9bba0a40c3ea26d96b431db67"},
 ]
 pandas-gbq = [
-    {file = "pandas-gbq-0.17.8.tar.gz", hash = "sha256:5d5329e8834dff49c148b6367686fb2d008a3214ad68e403574801e120337d84"},
-    {file = "pandas_gbq-0.17.8-py2.py3-none-any.whl", hash = "sha256:d067da6104ab475f8145370231a6b143f2d69d9c41e263617e8676c9fc8b72f0"},
+    {file = "pandas-gbq-0.17.9.tar.gz", hash = "sha256:066eacb9c3b18dec7bccd0a0ea67a3bdd79519255be4e59231e5d323ac984fe8"},
+    {file = "pandas_gbq-0.17.9-py2.py3-none-any.whl", hash = "sha256:e02cff40d26dd67a0131794749c086dce773d58792559cee7ed7deaefed6723c"},
 ]
 pandas-profiling = [
     {file = "pandas-profiling-3.3.0.tar.gz", hash = "sha256:0ec14b77aa86f6c261e04e1d1b8511994aa3402c1a0fc83393073ba1576f9434"},
