@@ -29,3 +29,4 @@ with open(path, "rb") as data:
     container_client.upload_blob(name="GCP-Billing-Data.parquet", data=data)
     print("Uploaded file to container")
 
+print("Done!!")

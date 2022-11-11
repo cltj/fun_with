@@ -18,10 +18,9 @@ cast(usage_start_time as date) as startdate,
 cast(usage_end_time as date) as enddate
 
 FROM '@projectName.@datasetName.@tableName'
-WHERE billing_account_id = @billing_account_id -- The length of the frame e.g the rows included
-AND invoice.month = '@month-3'
-OR  invoice.month = '@month-2'
-OR  invoice.month = '@month-1'
+WHERE billing_account_id = '@billing_account_id' -- The length of the frame e.g the rows included
+AND invoice.month BETWEEN '@yyyyMM' AND '@yyyyMM'
 AND cast(usage_start_time as date) >= date_add(CURRENT_DATE(),INTERVAL -90 DAY)
 AND usage.amount > 0
 GROUP BY startdate, enddate, billing_account_id, cost_type, serviceId, region, usageUnit, projectName, projectId,currency, invoiceMonth, serviceDescription, sku, resourceName, labelsid
+

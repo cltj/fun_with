@@ -1,26 +1,106 @@
-# Created by https://www.toptal.com/developers/gitignore/api/python,virtualenv,jupyternotebooks,dotenv,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=python,virtualenv,jupyternotebooks,dotenv,visualstudiocode
-
-# Certificates
-/cert
-/cert/*
+# Created by https://www.toptal.com/developers/gitignore/api/python,dotenv,git,jupyternotebooks,visualstudiocode,images,test
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,dotenv,git,jupyternotebooks,visualstudiocode,images,test
 
 ### dotenv ###
 .env
 
-### Files ###
-*.parquet
-*.csv
 
-### AWS/GCP/azure folder ###
-.aws
-/aws/*
-.azure
-/azure/*
-.gcp
-/gcp/*
-.local
-/local/*
+### Local Folder and keys ###
+
+local/*
+local/
+keys/*
+keys/
+
+### Config File ###
+
+src/config.py
+pocs/1/config.py
+pocs/2/config.py
+pocs/3/config.py
+pocs/4/config.py
+pocs/5/config.py
+pocs/6/config.py
+
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
+
+### Images ###
+# JPEG
+*.jpg
+*.jpeg
+*.jpe
+*.jif
+*.jfif
+*.jfi
+
+# JPEG 2000
+*.jp2
+*.j2k
+*.jpf
+*.jpx
+*.jpm
+*.mj2
+
+# JPEG XR
+*.jxr
+*.hdp
+*.wdp
+
+# Graphics Interchange Format
+*.gif
+
+# RAW
+*.raw
+
+# Web P
+*.webp
+
+# Portable Network Graphics
+*.png
+
+# Animated Portable Network Graphics
+*.apng
+
+# Multiple-image Network Graphics
+*.mng
+
+# Tagged Image File Format
+*.tiff
+*.tif
+
+# Scalable Vector Graphics
+*.svg
+*.svgz
+
+# Portable Document Format
+*.pdf
+
+# X BitMap
+*.xbm
+
+# BMP
+*.bmp
+*.dib
+
+# ICO
+*.ico
+
+# 3D Images
+*.3dm
+*.max
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
@@ -194,17 +274,85 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-### VirtualEnv ###
-# Virtualenv
-# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-pip-selfcheck.json
+### Test ###
+### Ignore all files that could be used to test your code and
+### you wouldn't want to push
+
+# Reference https://en.wikipedia.org/wiki/Metasyntactic_variable
+
+# Most common
+*foo
+*bar
+*fubar
+*foobar
+*baz
+
+# Less common
+*qux
+*quux
+*bongo
+*bazola
+*ztesch
+
+# UK, Australia
+*wibble
+*wobble
+*wubble
+*flob
+*blep
+*blah
+*boop
+*beep
+
+# Japanese
+*hoge
+*piyo
+*fuga
+*hogera
+*hogehoge
+
+# Portugal, Spain
+*fulano
+*sicrano
+*beltrano
+*mengano
+*perengano
+*zutano
+
+# France, Italy, the Netherlands
+*toto
+*titi
+*tata
+*tutu
+*pipppo
+*pluto
+*paperino
+*aap
+*noot
+*mies
+
+# Other names that would make sense
+*tests
+*testsdir
+*testsfile
+*testsfiles
+*test
+*testdir
+*testfile
+*testfiles
+*testing
+*testingdir
+*testingfile
+*testingfiles
+*temp
+*tempdir
+*tempfile
+*tempfiles
+*tmp
+*tmpdir
+*tmpfile
+*tmpfiles
+*lol
 
 ### VisualStudioCode ###
 .vscode/*
@@ -231,4 +379,4 @@ pip-selfcheck.json
 # Ignore code-workspaces
 *.code-workspace
 
-# End of https://www.toptal.com/developers/gitignore/api/python,virtualenv,jupyternotebooks,dotenv,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/python,dotenv,git,jupyternotebooks,visualstudiocode,images,test

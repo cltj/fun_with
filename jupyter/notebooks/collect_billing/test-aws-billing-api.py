@@ -21,4 +21,4 @@ for s3_object in bucket.objects.all():
         count += 1
 
 
-print('DONE!!!')
+print('DONE')
