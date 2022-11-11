@@ -20,7 +20,12 @@ print(article)
 
 
 
-##
+# Since the classes store data, checking two objects if they 
+# have the same data is a very common task that’s needed with dataclasses.
+# This is accomplished by using the == operator. 
+# Below is the code for an equivalent class for storing an article without a dataclass decorator. 
+
+
 
 class NormalArticle():
     """A class for holding an article content"""
